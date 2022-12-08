@@ -2,10 +2,12 @@ package com.example.charactersproject.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import com.example.charactersproject.Data
 import com.example.charactersproject.databinding.ItemCharacherBinding
 
-class DisnayAdapter : androidx.recyclerview.widget.ListAdapter<Data, DisneyViewHolder> (DisneyDifUtil()) {
+class DisnayAdapter (private val onClick: (image:Data) -> Unit) : PagingDataAdapter<Data, DisneyViewHolder> (DisneyDifUtil()) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DisneyViewHolder {
         return DisneyViewHolder (
             ItemCharacherBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -13,7 +15,16 @@ class DisnayAdapter : androidx.recyclerview.widget.ListAdapter<Data, DisneyViewH
     }
 
     override fun onBindViewHolder(holder: DisneyViewHolder, position: Int) {
-         holder.bind(getItem(position))
+        getItem(position)?.let { data ->
+            holder.bind(data)
+            holder.itemView.setOnClickListener {
+            onClick(data)
+        }
+//         holder.bind(getItem(position))
+//        holder.itemView.setOnClickListener {
+//            onClick(getItem(position))
+
+        }
     }
 
 }

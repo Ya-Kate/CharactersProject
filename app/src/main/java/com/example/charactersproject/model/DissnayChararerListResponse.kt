@@ -5,4 +5,5 @@ import com.example.charactersproject.DataCharacter
 
 data class DissnayChararerListResponse(
     val data: ArrayList<Data>
+
 )

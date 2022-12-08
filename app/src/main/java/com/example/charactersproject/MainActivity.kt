@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
 
         if (viewModel.firstStart()) {
             addFragment(AllDisnayCharacherFragment())
-        } else (
-                addFragment(StartDisnayCharacherFragment())
-                )
+        } else {
+            addFragment(StartDisnayCharacherFragment())
+        }
     }
 
     fun addFragment(fragment: Fragment) {
