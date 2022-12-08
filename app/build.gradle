@@ -74,6 +74,13 @@ dependencies {
 //  JSON
     implementation 'com.sealwu.jsontokotlin:library:3.7.4'
 
+    // Paginacia
+    implementation("androidx.paging:paging-runtime:3.1.1") // For Kotlin use paging-runtime-ktx
+    // alternatively - without Android dependencies for testing
+    testImplementation("androidx.paging:paging-common:3.1.1") // For Kotlin use paging-common-ktx
+    // optional - RxJava support
+    implementation("androidx.paging:paging-rxjava2:3.1.1") // For Kotlin use paging-rxjava2-ktx
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'

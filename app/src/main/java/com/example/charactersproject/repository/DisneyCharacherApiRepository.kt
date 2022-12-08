@@ -1,5 +1,6 @@
 package com.example.charactersproject.repository
 
+import androidx.lifecycle.MutableLiveData
 import com.example.charactersproject.model.DissnayChararerListResponse
 import com.example.charactersproject.network.DisnayCharacherFactApi
 import com.example.charactersproject.network.Network
@@ -8,9 +9,14 @@ import javax.inject.Inject
 
 class DisneyCharacherApiRepository @Inject constructor(private val api: DisnayCharacherFactApi) {
 
-    suspend fun getChercherFact(): Response<DissnayChararerListResponse> {
-        return Network().getCharacherFactApi().getFact()
+    private val network = Network()
+
+    suspend fun getChercherFact(page:Int, limit:Int): Response<DissnayChararerListResponse> {
+        return network.getCharacherFactApi().getFact(page, limit)
     }
 
+    suspend fun getImageDinneyCharacher(idImage: String):Response<DissnayChararerListResponse> {
+        return network.getCharacherFactApi().getOneCharacher(idImage)
+    }
 
 }
