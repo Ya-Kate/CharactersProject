@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="bg_button">
+        <item name="android:fontFamily">@font/public_sans_regular</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="background">@color/bg_botton</item>
+        <item name="android:textColor">@color/textTitle</item>
+
+    </style>
+    
+    <style name="button_back">
+        <item name="android:src">@drawable/ic_back</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:color">@color/ic_back</item>
+        <item name="iconSize">@dimen/dp_7</item>
+
+
+    </style>
+
+    <style name="button_add_my_disney">
+        <item name="android:src">@drawable/ic_like</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:color">@color/white</item>
+        <item name="iconSize">@dimen/dp_7</item>
+
+    </style>
+
+</resources>

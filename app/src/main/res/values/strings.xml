@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CharactersProject</string>
+    <string name="view_characher">View characher</string>
+    <string name="get_started">GET STARTED</string>
+    <string name="all">All</string>
+    <string name="my">My</string>
+    <string name="name_characher">Name characher</string>
+</resources>
