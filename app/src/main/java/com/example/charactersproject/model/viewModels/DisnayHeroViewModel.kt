@@ -11,6 +11,7 @@ import com.example.charactersproject.Data
 import com.example.charactersproject.model.DataHero
 import com.example.charactersproject.repository.DisneyHeroApiRepository
 import com.example.charactersproject.repository.DisneyDataSource
+import com.example.charactersproject.utils.toDataHero
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -55,13 +56,13 @@ class DisnayHeroViewModel @Inject constructor(
         }
     }
 
-//    fun getHero(id:String) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val response = disneyCharacherApiRepository.getImageDinneyHero(id)
-//            if (response.isSuccessful)
-//                listDisneyHero.postValue(response.body()?.toDataHero())
-//        }
-//    }
+    fun getHero(id:String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = disneyCharacherApiRepository.getImageDinneyHero(id)
+            if (response.isSuccessful)
+                listDisneyHero.postValue(response.body()?.toDataHero())
+        }
+    }
 
 }
 
