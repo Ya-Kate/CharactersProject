@@ -18,7 +18,7 @@ class SharedPreferenceRepositiry @Inject constructor(@ApplicationContext context
         return globalPreference.getBoolean(FIRST_START, false)
     }
 
-    fun notFerstStart() {
+    fun notFirstStart() {
         globalPreference.edit {
             putBoolean(FIRST_START, true)
         }

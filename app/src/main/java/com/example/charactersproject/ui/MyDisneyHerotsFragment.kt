@@ -6,19 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.charactersproject.R
-import com.example.charactersproject.databinding.FragmentMyDisneyCharacherBinding
+import com.example.charactersproject.databinding.FragmentMyDisneyHeroesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MyDisneyCharacherFragment : Fragment() {
-    private lateinit var binding: FragmentMyDisneyCharacherBinding
+class MyDisneyHerotsFragment : Fragment() {
+    private lateinit var binding: FragmentMyDisneyHeroesBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMyDisneyCharacherBinding.inflate(inflater, container, false)
+        binding = FragmentMyDisneyHeroesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -27,7 +27,7 @@ class MyDisneyCharacherFragment : Fragment() {
 
         binding.bottonBack.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.container, AllDisnayCharacherFragment())
+                .replace(R.id.container, AllDisneyHeroesFragment())
                 .addToBackStack("")
                 .commit()
         }

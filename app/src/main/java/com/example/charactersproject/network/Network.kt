@@ -8,15 +8,13 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 class Network {
 
     @Provides
-    fun getCharacherFactApi() : DisnayCharacherFactApi {
+    fun getHeroFactApi() : DisneyHeroFactApi {
 
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -26,6 +24,6 @@ class Network {
             .client(OkHttpClient.Builder().addInterceptor (loggingInterceptor).build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        return retrofit.create(DisnayCharacherFactApi::class.java)
+        return retrofit.create(DisneyHeroFactApi::class.java)
     }
 }

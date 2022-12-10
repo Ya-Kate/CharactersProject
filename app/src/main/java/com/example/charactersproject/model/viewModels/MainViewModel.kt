@@ -1,4 +1,4 @@
-package com.example.charactersproject.ui
+package com.example.charactersproject.model.viewModels
 
 import androidx.lifecycle.ViewModel
 import com.example.charactersproject.repository.SharedPreferenceRepositiry
