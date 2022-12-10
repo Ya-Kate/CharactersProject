@@ -55,11 +55,10 @@ class ChooseDisneyHeroFtagment : Fragment() {
             Log.d("MyLog", "getString arguments: $id")
             viewModel.getImageDinneyCharacher(id)
 
-//            viewModel.listDisneyHero.observe(viewLifecycleOwner) {
-//                setListDisneyHeroShow(it.listHeroShow)
-//            }
-//
-//            viewModel.getHero(id)
+            viewModel.listDisneyHero.observe(viewLifecycleOwner) {
+                setListDisneyHeroShow(it.listHeroShow )
+            }
+            viewModel.getHero(id)
         }
 
 
