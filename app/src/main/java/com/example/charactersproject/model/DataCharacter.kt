@@ -1,5 +1,7 @@
 package com.example.charactersproject
 
+import com.google.gson.annotations.SerializedName
+
 data class DataCharacter(
     val count: Int,
     val data: List<Data>,
@@ -8,6 +10,7 @@ data class DataCharacter(
 )
 
 data class Data(
+    @SerializedName("_id")
     val id: Int,
     val allies: List<Any>,
     val enemies: List<Any>,

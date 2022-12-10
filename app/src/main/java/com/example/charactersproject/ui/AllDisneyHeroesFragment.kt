@@ -12,25 +12,25 @@ import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.charactersproject.Data
 import com.example.charactersproject.R
-import com.example.charactersproject.databinding.FragmentAllCharacherBinding
-import com.example.charactersproject.ui.adapter.DisnayAdapter
+import com.example.charactersproject.databinding.FragmentAllHeroesBinding
+import com.example.charactersproject.model.viewModels.DisnayHeroViewModel
+import com.example.charactersproject.ui.adapter.DisneyAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AllDisnayCharacherFragment : Fragment() {
+class AllDisneyHeroesFragment : Fragment() {
 
-    private lateinit var binding: FragmentAllCharacherBinding
-
-    private val viewModel: DisnayCharacherViewModel by viewModels()
+    private lateinit var binding: FragmentAllHeroesBinding
+    private val viewModel: DisnayHeroViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAllCharacherBinding.inflate(inflater, container, false)
+        binding = FragmentAllHeroesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -45,7 +45,7 @@ class AllDisnayCharacherFragment : Fragment() {
 
         binding.bottonMy.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.container, MyDisneyCharacherFragment())
+                .replace(R.id.container, MyDisneyHerotsFragment())
                 .addToBackStack("")
                 .commit()
         }
@@ -61,20 +61,17 @@ class AllDisnayCharacherFragment : Fragment() {
     private suspend fun setList(list: PagingData<Data>) {
         binding.listNote.run {
             if (adapter == null) {
-                adapter = DisnayAdapter {
+                adapter = DisneyAdapter {
                     parentFragmentManager.beginTransaction()
-                        .replace(R.id.container, ChooseDisneyCharacherFtagment().apply {
-                            arguments = bundleOf("ID" to it.id)
+                        .replace(R.id.container, ChooseDisneyHeroFtagment().apply {
+                            arguments = bundleOf("ID" to it.id.toString())
                         })
                         .addToBackStack("")
                         .commit()
                 }
                 layoutManager = GridLayoutManager(requireContext(), 2)
             }
-            (adapter as? DisnayAdapter)?.submitData(list)
+            (adapter as? DisneyAdapter)?.submitData(list)
         }
-
     }
-
-
 }

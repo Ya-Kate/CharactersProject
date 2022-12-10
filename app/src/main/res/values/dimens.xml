@@ -128,6 +128,7 @@
     <dimen name="dp25">25dp</dimen>
     <dimen name="dp230">230dp</dimen>
     <dimen name="dp300">300dp</dimen>
+    <dimen name="dp400">400dp</dimen>
     <!--    <dimen name="_38dp">38dp</dimen>-->
 <!--    <dimen name="_21dp">21dp</dimen>-->
 <!--    <dimen name="_322dp">322dp</dimen>-->

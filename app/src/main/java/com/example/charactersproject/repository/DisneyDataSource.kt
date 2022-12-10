@@ -1,13 +1,12 @@
 package com.example.charactersproject.repository
 
-import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.charactersproject.Data
 import javax.inject.Inject
 
 class DisneyDataSource @Inject constructor(
-    private val repository: DisneyCharacherApiRepository
+    private val repository: DisneyHeroApiRepository
 ) : PagingSource<Int, Data>() {
 
     override fun getRefreshKey(state: PagingState<Int, Data>): Int? {
@@ -19,7 +18,7 @@ class DisneyDataSource @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Data> {
         val key = params.key ?: 1
-        val respons = repository.getChercherFact(key, params.loadSize)
+        val respons = repository.getHeroFactApi(key, params.loadSize)
         return LoadResult.Page(
             data = respons.body()?.data ?: arrayListOf(),
             prevKey = null,

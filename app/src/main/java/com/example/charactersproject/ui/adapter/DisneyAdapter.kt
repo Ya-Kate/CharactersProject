@@ -4,28 +4,28 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import com.example.charactersproject.Data
-import com.example.charactersproject.databinding.ItemCharacherBinding
+import com.example.charactersproject.databinding.ItemHeroBinding
 
-class DisnayAdapter (private val onClick: (image:Data) -> Unit) : PagingDataAdapter<Data, DisneyViewHolder> (DisneyDifUtil()) {
+class DisneyAdapter(private val onClick: (image: Data) -> Unit) :
+    PagingDataAdapter<Data, DisneyViewHolder>(DisneyDifUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DisneyViewHolder {
-        return DisneyViewHolder (
-            ItemCharacherBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                )
+        return DisneyViewHolder(
+            ItemHeroBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: DisneyViewHolder, position: Int) {
         getItem(position)?.let { data ->
             holder.bind(data)
             holder.itemView.setOnClickListener {
-            onClick(data)
-        }
+                onClick(data)
+            }
 //         holder.bind(getItem(position))
 //        holder.itemView.setOnClickListener {
 //            onClick(getItem(position))
 
         }
     }
-
 }
 
