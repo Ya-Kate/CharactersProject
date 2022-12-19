@@ -5,30 +5,31 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.charactersproject.R
 import com.example.charactersproject.databinding.FragmentChooseHeroesBinding
 import com.example.charactersproject.model.HeroShow
-import com.example.charactersproject.model.viewModels.DisnayHeroViewModel
-import com.example.charactersproject.ui.adapter.DisneyAdapter
+import com.example.charactersproject.model.viewModels.DisneyHeroViewModel
 import com.example.charactersproject.ui.adapterHero.DisneyHeroAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 private const val ID_IMAGE = "idImage"
 
-@AndroidEntryPoint
-class ChooseDisneyHeroFtagment : Fragment() {
 
-    private val viewModel: DisnayHeroViewModel by viewModels()
+@AndroidEntryPoint
+class ChooseDisneyHeroFragment : Fragment() {
+
+    private val viewModel: DisneyHeroViewModel by viewModels()
     lateinit var binding: FragmentChooseHeroesBinding
+    var idImage: String = ""
+    var name: String = ""
+    var image: String = ""
+    var isHeroLike:Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,20 +44,31 @@ class ChooseDisneyHeroFtagment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.image.observe(viewLifecycleOwner) {
+            image = it
             Glide.with(requireContext()).load(it).into(binding.imageChoose)
             Log.d("MyLog", "Glide $it")
         }
 
         viewModel.name.observe(viewLifecycleOwner) {
+            name = it
             binding.nameCharacher.text = it
+        }
+
+        arguments?.getBoolean("BOOL")?.let {
+            isHeroLike = it
         }
 
         arguments?.getString("ID")?.let { id ->
             Log.d("MyLog", "getString arguments: $id")
             viewModel.getImageDinneyCharacher(id)
+            idImage = id
+
+            if(isHeroLike) {
+                binding.buttonAddMyDisney.setImageDrawable(resources.getDrawable(R.drawable.icon_red_like))
+            }
 
             viewModel.listDisneyHero.observe(viewLifecycleOwner) {
-                setListDisneyHeroShow(it.listHeroShow )
+                setListDisneyHeroShow(it.listHeroShow)
             }
             viewModel.getHero(id)
         }
@@ -66,10 +78,14 @@ class ChooseDisneyHeroFtagment : Fragment() {
             requireActivity().onBackPressed()
         }
 
-        binding.buttonAddMyDisney.setOnClickListener()
-        {
-//            binding.buttonAddMyDisney.setImageResource(resources.getValue(R.style.button_all_add_my_disney))
+        binding.buttonAddMyDisney.setOnClickListener() {
+            if(!isHeroLike) {
+                viewModel.addMyDisneyHeroList(name, image, idImage)
 
+            }
+            if(isHeroLike){
+                Toast.makeText(context, "no like hero", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -78,6 +94,7 @@ class ChooseDisneyHeroFtagment : Fragment() {
             if (adapter == null) {
                 adapter = DisneyHeroAdapter()
                 layoutManager = LinearLayoutManager(requireContext())
+
             }
             (adapter as? DisneyHeroAdapter)?.submitList(list)
         }
@@ -93,6 +110,7 @@ class ChooseDisneyHeroFtagment : Fragment() {
     }
 
 }
+
 
 
 

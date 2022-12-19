@@ -4,60 +4,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/image_three">
-
-    <ImageView
-        android:id="@+id/image_choose"
-        android:layout_width="@dimen/dp300"
-        android:layout_height="300dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="@dimen/dp22"/>
-
-    <TextView
-        android:id="@+id/name_characher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="320dp"
-        android:background="@null"
-        android:textSize="34sp"
-        android:textColor="@color/white"
-        android:shadowColor="@color/black"
-        android:shadowDx="5"
-        android:shadowDy="5"
-        android:shadowRadius="5"
-        android:text="@string/name_characher"/>
-
-    <ImageButton
-        android:id="@+id/botton_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp40"
-        android:layout_marginTop="@dimen/dp90"
-        android:background="@drawable/bg_back"
-        style="@style/button_back"/>
-
-    <ImageButton
-        android:id="@+id/button_add_my_disney"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp300"
-        android:layout_marginTop="@dimen/dp90"
-        android:background="@drawable/bg_add_my_like_disney"
-        style="@style/button_my_disney"
-        app:tint="@color/white" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_films"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp400"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginEnd="@dimen/dp_16"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/image_three">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/image_choose"
+            android:layout_width="@dimen/dp300"
+            android:layout_height="300dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="@dimen/dp22" />
+
+        <TextView
+            android:id="@+id/name_characher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="320dp"
+            android:background="@null"
+            android:shadowColor="@color/black"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            android:text="@string/name_characher"
+            android:textColor="@color/white"
+            android:textSize="34sp" />
+
+        <ImageButton
+            android:id="@+id/botton_back"
+            style="@style/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp90"
+            android:background="@drawable/bg_back" />
+
+
+        <ImageButton
+            android:id="@+id/button_add_my_disney"
+            style="@style/button_my_disney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp300"
+            android:layout_marginTop="@dimen/dp90"
+            android:background="@drawable/bg_add_my_like_disney"
+            app:tint="@color/white" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_films"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp400"
+            android:layout_marginEnd="@dimen/dp_16" />
+
+    </FrameLayout>
 
 </androidx.core.widget.NestedScrollView>

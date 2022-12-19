@@ -21,6 +21,7 @@ class DisneyAdapter(private val onClick: (image: Data) -> Unit) :
             holder.itemView.setOnClickListener {
                 onClick(data)
             }
+
 //         holder.bind(getItem(position))
 //        holder.itemView.setOnClickListener {
 //            onClick(getItem(position))

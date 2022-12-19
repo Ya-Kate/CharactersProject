@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.charactersproject.R
 import com.example.charactersproject.databinding.FragmentViewStartBinding
-import com.example.charactersproject.repository.SharedPreferenceRepositiry
+import com.example.charactersproject.repository.SharedPreferenceRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -17,7 +17,7 @@ class StartDisnayHeroFragment : Fragment() {
     private lateinit var binding: FragmentViewStartBinding
 
     @Inject
-    lateinit var sharedPreferenceRepositiry: SharedPreferenceRepositiry
+    lateinit var sharedPreferenceRepositiry: SharedPreferenceRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
