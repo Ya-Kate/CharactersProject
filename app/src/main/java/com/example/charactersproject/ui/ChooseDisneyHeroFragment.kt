@@ -1,5 +1,6 @@
 package com.example.charactersproject.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,25 +12,37 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.charactersproject.App
 import com.example.charactersproject.R
 import com.example.charactersproject.databinding.FragmentChooseHeroesBinding
 import com.example.charactersproject.model.HeroShow
 import com.example.charactersproject.model.viewModels.DisneyHeroViewModel
+import com.example.charactersproject.model.viewModels.DisneyHeroViewModelFactory
 import com.example.charactersproject.ui.adapterHero.DisneyHeroAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val ID_IMAGE = "idImage"
 
 
-@AndroidEntryPoint
 class ChooseDisneyHeroFragment : Fragment() {
 
-    private val viewModel: DisneyHeroViewModel by viewModels()
+    @Inject
+    lateinit var viewModelFactory: DisneyHeroViewModelFactory
+
+    private val viewModel: DisneyHeroViewModel by viewModels {
+        viewModelFactory
+    }
     lateinit var binding: FragmentChooseHeroesBinding
     var idImage: String = ""
     var name: String = ""
     var image: String = ""
     var isHeroLike:Boolean = false
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        App.appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -100,14 +113,14 @@ class ChooseDisneyHeroFragment : Fragment() {
         }
     }
 
-    companion object {
-        fun getImageDisney(id: String): MyDisneyHerotsFragment {
-            return MyDisneyHerotsFragment().apply {
-                arguments = bundleOf()
-                ID_IMAGE to id
-            }
-        }
-    }
+//    companion object {
+//        fun getImageDisney(id: String): MyDisneyHerotsFragment {
+//            return MyDisneyHerotsFragment().apply {
+//                arguments = bundleOf()
+//                ID_IMAGE to id
+//            }
+//        }
+//    }
 
 }
 

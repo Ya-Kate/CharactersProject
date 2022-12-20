@@ -1,5 +1,6 @@
 package com.example.charactersproject.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,23 +14,35 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.charactersproject.App
 import com.example.charactersproject.Data
 import com.example.charactersproject.R
 import com.example.charactersproject.databinding.FragmentAllHeroesBinding
 import com.example.charactersproject.model.MyDisneyHero
 import com.example.charactersproject.model.viewModels.DisneyHeroViewModel
+import com.example.charactersproject.model.viewModels.DisneyHeroViewModelFactory
 import com.example.charactersproject.ui.adapter.DisneyAdapter
 import com.example.charactersproject.ui.adapterMyLikeHero.MyDisneyHeroAdapter
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class AllDisneyHeroesFragment : Fragment() {
 
+    @Inject
+    lateinit var viewModelFactory: DisneyHeroViewModelFactory
+
+    private val viewModel: DisneyHeroViewModel by viewModels {
+        viewModelFactory
+    }
+
     private lateinit var binding: FragmentAllHeroesBinding
-    private val viewModel: DisneyHeroViewModel by viewModels()
     var isHeroLike: Boolean = false
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        App.appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

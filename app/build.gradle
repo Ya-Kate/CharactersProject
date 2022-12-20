@@ -57,6 +57,10 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
 
+//    Dagger2
+    implementation 'com.google.dagger:dagger:2.44.2'
+    kapt 'com.google.dagger:dagger-compiler:2.44.2'
+
 //    на scoup, retrofit
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'

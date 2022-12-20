@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.example.charactersproject.ui.AllDisneyHeroesFragment
 import com.example.charactersproject.model.viewModels.MainViewModel
-import com.example.charactersproject.ui.StartDisnayHeroFragment
+import com.example.charactersproject.ui.StartDisneyHeroFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         if (viewModel.firstStart()) {
             addFragment(AllDisneyHeroesFragment())
         } else {
-            addFragment(StartDisnayHeroFragment())
+            addFragment(StartDisneyHeroFragment())
         }
     }
 
