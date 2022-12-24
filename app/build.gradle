@@ -3,6 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+
+//    //    Firebase
+    id 'com.google.gms.google-services'
+    // Add the Crashlytics Gradle plugin
+    id 'com.google.firebase.crashlytics'
+
 }
 
 android {
@@ -51,6 +57,10 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
 
+//    Dagger2
+    implementation 'com.google.dagger:dagger:2.44.2'
+    kapt 'com.google.dagger:dagger-compiler:2.44.2'
+
 //    на scoup, retrofit
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
@@ -73,6 +83,28 @@ dependencies {
 
 //  JSON
     implementation 'com.sealwu.jsontokotlin:library:3.7.4'
+
+    // Paginacia
+    implementation("androidx.paging:paging-runtime:3.1.1") // For Kotlin use paging-runtime-ktx
+    // alternatively - without Android dependencies for testing
+    testImplementation("androidx.paging:paging-common:3.1.1") // For Kotlin use paging-common-ktx
+    // optional - RxJava support
+    implementation("androidx.paging:paging-rxjava2:3.1.1") // For Kotlin use paging-rxjava2-ktx
+
+//  flexbox
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+//    Room
+    implementation "androidx.room:room-runtime:2.4.3"
+    implementation "androidx.room:room-ktx:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
+
+  // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+
+    // Add the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
