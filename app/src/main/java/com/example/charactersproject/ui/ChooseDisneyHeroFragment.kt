@@ -19,7 +19,6 @@ import com.example.charactersproject.model.HeroShow
 import com.example.charactersproject.model.viewModels.DisneyHeroViewModel
 import com.example.charactersproject.model.viewModels.DisneyHeroViewModelFactory
 import com.example.charactersproject.ui.adapterHero.DisneyHeroAdapter
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 private const val ID_IMAGE = "idImage"
@@ -37,7 +36,7 @@ class ChooseDisneyHeroFragment : Fragment() {
     var idImage: String = ""
     var name: String = ""
     var image: String = ""
-    var isHeroLike:Boolean = false
+    var isHeroLike: Boolean = false
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -76,7 +75,7 @@ class ChooseDisneyHeroFragment : Fragment() {
             viewModel.getImageDinneyCharacher(id)
             idImage = id
 
-            if(isHeroLike) {
+            if (isHeroLike) {
                 binding.buttonAddMyDisney.setImageDrawable(resources.getDrawable(R.drawable.icon_red_like))
             }
 
@@ -92,11 +91,11 @@ class ChooseDisneyHeroFragment : Fragment() {
         }
 
         binding.buttonAddMyDisney.setOnClickListener() {
-            if(!isHeroLike) {
+            if (!isHeroLike) {
                 viewModel.addMyDisneyHeroList(name, image, idImage)
 
             }
-            if(isHeroLike){
+            if (isHeroLike) {
                 Toast.makeText(context, "no like hero", Toast.LENGTH_LONG).show()
             }
         }
@@ -112,16 +111,6 @@ class ChooseDisneyHeroFragment : Fragment() {
             (adapter as? DisneyHeroAdapter)?.submitList(list)
         }
     }
-
-//    companion object {
-//        fun getImageDisney(id: String): MyDisneyHerotsFragment {
-//            return MyDisneyHerotsFragment().apply {
-//                arguments = bundleOf()
-//                ID_IMAGE to id
-//            }
-//        }
-//    }
-
 }
 
 

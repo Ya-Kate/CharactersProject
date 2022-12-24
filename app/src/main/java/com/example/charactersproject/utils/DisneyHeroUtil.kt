@@ -1,7 +1,6 @@
 package com.example.charactersproject.utils
 
 import com.example.charactersproject.Data
-import com.example.charactersproject.DataCharacter
 import com.example.charactersproject.model.DataHero
 import com.example.charactersproject.model.HeroShow
 

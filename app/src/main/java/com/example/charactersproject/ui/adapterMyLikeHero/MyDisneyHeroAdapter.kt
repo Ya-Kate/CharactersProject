@@ -19,15 +19,10 @@ class MyDisneyHeroAdapter :
 
     override fun onBindViewHolder(holder: MyDisneyHeroViewHolder, position: Int) {
         holder.bind(list[position])
-//            getItem(position)?.let { data ->
-//                holder.bind(data)
-//            }
-//            getItem(position)?.let { holder.bind(it) }
     }
 
     fun selList(list: ArrayList<MyDisneyHero>) {
         this.list = list
-//        notifyDataSetChanged()
     }
 
 }

@@ -23,5 +23,4 @@ class SharedPreferenceRepository @Inject constructor(@ApplicationContext context
             putBoolean(FIRST_START, true)
         }
     }
-
 }

@@ -9,9 +9,8 @@ import javax.inject.Inject
 class MainViewModelFactory @Inject constructor(
     private val sharedPreference: SharedPreferenceRepository
 ) : ViewModelProvider.Factory {
-
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
-        return MainViewModel (sharedPreference) as T
+        return MainViewModel(sharedPreference) as T
     }
 }

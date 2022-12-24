@@ -12,8 +12,6 @@ import com.example.charactersproject.R
 import com.example.charactersproject.databinding.FragmentViewStartBinding
 import com.example.charactersproject.model.viewModels.MainViewModel
 import com.example.charactersproject.model.viewModels.MainViewModelFactory
-import com.example.charactersproject.repository.SharedPreferenceRepository
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 class StartDisneyHeroFragment : Fragment() {
@@ -50,9 +48,7 @@ class StartDisneyHeroFragment : Fragment() {
                 .addToBackStack("")
                 .commit()
         }
-
     }
-
 }
 
 

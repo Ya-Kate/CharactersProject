@@ -7,8 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface DisneyHeroFactApi {
-
+interface DisneyHeroApi {
     @GET("/characters")
     suspend fun getFact(
         @Query("page") page: Int,

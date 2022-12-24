@@ -10,7 +10,8 @@ class FilmsAdapter : ListAdapter<String, FilmsViewHolder>(FilmsDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmsViewHolder {
         return FilmsViewHolder(
             ItemNameFilmsBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false )
+                LayoutInflater.from(parent.context), parent, false
+            )
         )
     }
 

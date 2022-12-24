@@ -16,7 +16,7 @@ import com.example.charactersproject.utils.toDataHero
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DisneyHeroViewModel (
+class DisneyHeroViewModel(
     private val disneyHeroApiRepository: DisneyHeroApiRepository,
     private val disneyDataSource: DisneyDataSource
 ) : ViewModel() {
