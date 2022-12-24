@@ -8,28 +8,37 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.charactersproject.R
 import com.example.charactersproject.databinding.FragmentChooseHeroesBinding
 import com.example.charactersproject.model.HeroShow
 import com.example.charactersproject.model.viewModels.DisneyHeroViewModel
+import com.example.charactersproject.ui.adapter.listHeroModule
 import com.example.charactersproject.ui.adapterHero.DisneyHeroAdapter
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 private const val ID_IMAGE = "idImage"
 
-
-@AndroidEntryPoint
 class ChooseDisneyHeroFragment : Fragment() {
 
-    private val viewModel: DisneyHeroViewModel by viewModels()
+    private val viewModel: DisneyHeroViewModel by viewModel<DisneyHeroViewModel>()
     lateinit var binding: FragmentChooseHeroesBinding
     var idImage: String = ""
     var name: String = ""
     var image: String = ""
-    var isHeroLike:Boolean = false
+    var isHeroLike: Boolean = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        loadKoinModules(listHeroModule)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        loadKoinModules(listHeroModule)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,7 +72,7 @@ class ChooseDisneyHeroFragment : Fragment() {
             viewModel.getImageDinneyCharacher(id)
             idImage = id
 
-            if(isHeroLike) {
+            if (isHeroLike) {
                 binding.buttonAddMyDisney.setImageDrawable(resources.getDrawable(R.drawable.icon_red_like))
             }
 
@@ -79,11 +88,11 @@ class ChooseDisneyHeroFragment : Fragment() {
         }
 
         binding.buttonAddMyDisney.setOnClickListener() {
-            if(!isHeroLike) {
+            if (!isHeroLike) {
                 viewModel.addMyDisneyHeroList(name, image, idImage)
 
             }
-            if(isHeroLike){
+            if (isHeroLike) {
                 Toast.makeText(context, "no like hero", Toast.LENGTH_LONG).show()
             }
         }

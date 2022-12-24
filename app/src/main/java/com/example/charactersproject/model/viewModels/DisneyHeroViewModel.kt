@@ -13,13 +13,10 @@ import com.example.charactersproject.model.MyDisneyHero
 import com.example.charactersproject.repository.DisneyHeroApiRepository
 import com.example.charactersproject.repository.DisneyDataSource
 import com.example.charactersproject.utils.toDataHero
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class DisneyHeroViewModel @Inject constructor(
+class DisneyHeroViewModel(
     private val disneyHeroApiRepository: DisneyHeroApiRepository,
     private val disneyDataSource: DisneyDataSource
 ) : ViewModel() {
@@ -27,7 +24,6 @@ class DisneyHeroViewModel @Inject constructor(
     val listDisneyHeroes = MutableLiveData<ArrayList<Data>>()
     val listDisneyHero = MutableLiveData<DataHero>()
     val listMyLikeDisneyHero = MutableLiveData<ArrayList<MyDisneyHero>>()
-    var isHeroInLike = MutableLiveData<Boolean>()
     val image = MutableLiveData<String>()
     val name = MutableLiveData<String>()
 

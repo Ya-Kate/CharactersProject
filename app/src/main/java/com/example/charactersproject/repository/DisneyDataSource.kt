@@ -5,7 +5,7 @@ import androidx.paging.PagingState
 import com.example.charactersproject.Data
 import javax.inject.Inject
 
-class DisneyDataSource @Inject constructor(
+class DisneyDataSource (
     private val repository: DisneyHeroApiRepository
 ) : PagingSource<Int, Data>() {
 

@@ -8,15 +8,11 @@ import androidx.fragment.app.Fragment
 import com.example.charactersproject.R
 import com.example.charactersproject.databinding.FragmentViewStartBinding
 import com.example.charactersproject.repository.SharedPreferenceRepository
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
-@AndroidEntryPoint
-class StartDisnayHeroFragment : Fragment() {
+
+class StartDisneyHeroFragment : Fragment() {
 
     private lateinit var binding: FragmentViewStartBinding
-
-    @Inject
     lateinit var sharedPreferenceRepositiry: SharedPreferenceRepository
 
     override fun onCreateView(
