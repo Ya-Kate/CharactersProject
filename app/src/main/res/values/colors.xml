@@ -14,7 +14,8 @@
     <color name="bg_back">#FCEEFB</color>
     <color name="ic_back">#3F414E</color>
     <color name="bg_add_my_disney">#3CB6AA</color>
-    <color name="bg_add_my_disney_back">#108075</color>
+    <color name="bg_flex_box">#D0C7F3</color>
+    <color name="bg_live_red">#FA2313</color>
 
 
 </resources>

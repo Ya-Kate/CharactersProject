@@ -10,7 +10,7 @@ private const val GLOBAL_PREF = "global_pref"
 private const val FIRST_START = "first_start"
 
 @Singleton
-class SharedPreferenceRepositiry @Inject constructor(@ApplicationContext context: Context) {
+class SharedPreferenceRepository (context: Context) {
 
     private val globalPreference = context.getSharedPreferences(GLOBAL_PREF, Context.MODE_PRIVATE)
 
@@ -18,10 +18,9 @@ class SharedPreferenceRepositiry @Inject constructor(@ApplicationContext context
         return globalPreference.getBoolean(FIRST_START, false)
     }
 
-    fun notFerstStart() {
+    fun notFirstStart() {
         globalPreference.edit {
             putBoolean(FIRST_START, true)
         }
     }
-
 }

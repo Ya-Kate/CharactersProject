@@ -1,8 +1,8 @@
-package com.example.charactersproject.ui
+package com.example.charactersproject.model
 
 import com.example.charactersproject.Data
 
-data class DisneyCharacherFact (
+data class DisneyHeroFact (
     val data: List<Data>
     )
 
