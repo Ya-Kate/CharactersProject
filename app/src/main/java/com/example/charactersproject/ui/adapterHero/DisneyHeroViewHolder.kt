@@ -17,7 +17,7 @@ class DisneyHeroViewHolder(
             if (adapter == null) {
                 adapter = FilmsAdapter()
                 layoutManager = FlexboxLayoutManager(binding.root.context).apply {
-                    flexDirection = FlexDirection.ROW;
+                    flexDirection = FlexDirection.ROW
                     justifyContent = JustifyContent.FLEX_END
                 }
             }

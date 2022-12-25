@@ -12,12 +12,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class StartDisnayHeroFragment : Fragment() {
+class StartDisneyHeroFragment : Fragment() {
 
     private lateinit var binding: FragmentViewStartBinding
 
     @Inject
-    lateinit var sharedPreferenceRepositiry: SharedPreferenceRepository
+    lateinit var sharedPreferenceRepository: SharedPreferenceRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,16 +30,14 @@ class StartDisnayHeroFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedPreferenceRepositiry.notFirstStart()
+        sharedPreferenceRepository.notFirstStart()
         binding.getStarted.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.container, AllDisneyHeroesFragment())
                 .addToBackStack("")
                 .commit()
         }
-
     }
-
 }
 
 

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class MyDisneyHero(
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
 
     @ColumnInfo(name = "name")

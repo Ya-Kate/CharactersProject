@@ -14,10 +14,11 @@
             android:layout_width="@dimen/dp300"
             android:layout_height="300dp"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="@dimen/dp22" />
+            android:layout_marginTop="@dimen/dp22"
+            android:contentDescription="@string/disney_hero" />
 
         <TextView
-            android:id="@+id/name_characher"
+            android:id="@+id/name_hero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -27,18 +28,19 @@
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="5"
-            android:text="@string/name_characher"
+            android:text="@string/name_hero"
             android:textColor="@color/white"
             android:textSize="34sp" />
 
         <ImageButton
-            android:id="@+id/botton_back"
+            android:id="@+id/button_back"
             style="@style/button_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp40"
             android:layout_marginTop="@dimen/dp90"
-            android:background="@drawable/bg_back" />
+            android:background="@drawable/bg_back"
+            android:contentDescription="@string/go_back" />
 
 
         <ImageButton
@@ -49,6 +51,7 @@
             android:layout_marginStart="@dimen/dp300"
             android:layout_marginTop="@dimen/dp90"
             android:background="@drawable/bg_add_my_like_disney"
+            android:contentDescription="@string/my_like_hero"
             app:tint="@color/white" />
 
         <androidx.recyclerview.widget.RecyclerView

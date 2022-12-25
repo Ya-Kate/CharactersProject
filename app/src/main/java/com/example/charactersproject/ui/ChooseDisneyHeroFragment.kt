@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,18 +17,15 @@ import com.example.charactersproject.model.viewModels.DisneyHeroViewModel
 import com.example.charactersproject.ui.adapterHero.DisneyHeroAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
-private const val ID_IMAGE = "idImage"
-
-
 @AndroidEntryPoint
 class ChooseDisneyHeroFragment : Fragment() {
 
     private val viewModel: DisneyHeroViewModel by viewModels()
-    lateinit var binding: FragmentChooseHeroesBinding
-    var idImage: String = ""
+    private lateinit var binding: FragmentChooseHeroesBinding
+    private var idImage: String = ""
     var name: String = ""
     var image: String = ""
-    var isHeroLike:Boolean = false
+    var isHeroLike: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,7 +47,7 @@ class ChooseDisneyHeroFragment : Fragment() {
 
         viewModel.name.observe(viewLifecycleOwner) {
             name = it
-            binding.nameCharacher.text = it
+            binding.nameHero.text = it
         }
 
         arguments?.getBoolean("BOOL")?.let {
@@ -60,10 +56,10 @@ class ChooseDisneyHeroFragment : Fragment() {
 
         arguments?.getString("ID")?.let { id ->
             Log.d("MyLog", "getString arguments: $id")
-            viewModel.getImageDinneyCharacher(id)
+            viewModel.getImageDisneyHero(id)
             idImage = id
 
-            if(isHeroLike) {
+            if (isHeroLike) {
                 binding.buttonAddMyDisney.setImageDrawable(resources.getDrawable(R.drawable.icon_red_like))
             }
 
@@ -73,17 +69,15 @@ class ChooseDisneyHeroFragment : Fragment() {
             viewModel.getHero(id)
         }
 
-
-        binding.bottonBack.setOnClickListener {
+        binding.buttonBack.setOnClickListener {
             requireActivity().onBackPressed()
         }
 
-        binding.buttonAddMyDisney.setOnClickListener() {
-            if(!isHeroLike) {
+        binding.buttonAddMyDisney.setOnClickListener {
+            if (!isHeroLike) {
                 viewModel.addMyDisneyHeroList(name, image, idImage)
-
             }
-            if(isHeroLike){
+            if (isHeroLike) {
                 Toast.makeText(context, "no like hero", Toast.LENGTH_LONG).show()
             }
         }
@@ -94,20 +88,12 @@ class ChooseDisneyHeroFragment : Fragment() {
             if (adapter == null) {
                 adapter = DisneyHeroAdapter()
                 layoutManager = LinearLayoutManager(requireContext())
-
             }
             (adapter as? DisneyHeroAdapter)?.submitList(list)
         }
     }
 
-    companion object {
-        fun getImageDisney(id: String): MyDisneyHerotsFragment {
-            return MyDisneyHerotsFragment().apply {
-                arguments = bundleOf()
-                ID_IMAGE to id
-            }
-        }
-    }
+
 
 }
 

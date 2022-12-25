@@ -6,6 +6,5 @@ import com.example.charactersproject.model.MyDisneyHero
 
 @Database(entities = [MyDisneyHero::class], version = 1)
 abstract class AppDataBase : RoomDatabase() {
-
     abstract fun myDisneyHeroDao(): MyDisneyHeroDao
 }

@@ -12,33 +12,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 @InstallIn(SingletonComponent::class)
 class Network {
-
     @Provides
-    fun getHeroFactApi() : DisneyHeroFactApi {
+    fun getHeroFactApi(): DisneyHeroApi {
 
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.disneyapi.dev")
-            .client(OkHttpClient.Builder().addInterceptor (loggingInterceptor).build())
+            .client(OkHttpClient.Builder().addInterceptor(loggingInterceptor).build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        return retrofit.create(DisneyHeroFactApi::class.java)
+        return retrofit.create(DisneyHeroApi::class.java)
     }
-
-//    @Provides
-//    fun getMyHeroFactApi() : MyDisneyHeroFactApi {
-//
-//        val loggingInterceptor = HttpLoggingInterceptor()
-//        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-//
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl("https://api.disneyapi.dev")
-//            .client(OkHttpClient.Builder().addInterceptor (loggingInterceptor).build())
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//        return retrofit.create(MyDisneyHeroFactApi::class.java)
-//    }
-
 }

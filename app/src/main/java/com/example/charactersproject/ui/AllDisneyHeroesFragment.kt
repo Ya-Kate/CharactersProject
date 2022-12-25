@@ -43,18 +43,18 @@ class AllDisneyHeroesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.bottonAll.setOnClickListener {
+        binding.buttonAll.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.container, AllDisneyHeroesFragment())
                 .commit()
         }
 
-        binding.bottonMy.setOnClickListener {
-            binding.bottonMy.setImageDrawable(resources.getDrawable(R.drawable.icon_red_like))
-            binding.bottonMy.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_all_my_characher))
+        binding.buttonMy.setOnClickListener {
+            binding.buttonMy.setImageDrawable(resources.getDrawable(R.drawable.icon_red_like))
+            binding.buttonMy.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_all_my_heroes))
             binding.textMy.setTextColor(resources.getColor(R.color.textTitle))
-            binding.textAll.setTextColor(resources.getColor(R.color.bg_botton_no_activiti))
-            binding.bottonAll.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_all_my_characher_not_activiti))
+            binding.textAll.setTextColor(resources.getColor(R.color.bg_button_no_activity))
+            binding.buttonAll.setBackgroundDrawable(resources.getDrawable(R.drawable.bg_all_my_heroes_not_activity))
 
             Log.e("AllDisneyHeroesFragment", "break out")
 //            throw RuntimeException("Test Crash")

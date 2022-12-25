@@ -24,10 +24,9 @@ class DisneyHeroViewModel @Inject constructor(
     private val disneyDataSource: DisneyDataSource
 ) : ViewModel() {
 
-    val listDisneyHeroes = MutableLiveData<ArrayList<Data>>()
+    private val listDisneyHeroes = MutableLiveData<ArrayList<Data>>()
     val listDisneyHero = MutableLiveData<DataHero>()
     val listMyLikeDisneyHero = MutableLiveData<ArrayList<MyDisneyHero>>()
-    var isHeroInLike = MutableLiveData<Boolean>()
     val image = MutableLiveData<String>()
     val name = MutableLiveData<String>()
 
@@ -61,7 +60,7 @@ class DisneyHeroViewModel @Inject constructor(
         }
     }
 
-    fun getImageDinneyCharacher(id: String) {
+    fun getImageDisneyHero(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val response = disneyHeroApiRepository.getImageDisneyHero(id)
             Log.d(

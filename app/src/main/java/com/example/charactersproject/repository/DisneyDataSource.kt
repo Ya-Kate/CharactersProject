@@ -18,9 +18,9 @@ class DisneyDataSource @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Data> {
         val key = params.key ?: 1
-        val respons = repository.getHeroFactApi(key, params.loadSize)
+        val response = repository.getHeroFactApi(key, params.loadSize)
         return LoadResult.Page(
-            data = respons.body()?.data ?: arrayListOf(),
+            data = response.body()?.data ?: arrayListOf(),
             prevKey = null,
             nextKey = key + 1
         )

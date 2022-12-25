@@ -10,7 +10,7 @@ import com.example.charactersproject.databinding.FragmentMyDisneyHeroesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MyDisneyHerotsFragment : Fragment() {
+class MyDisneyHeroesFragment : Fragment() {
     private lateinit var binding: FragmentMyDisneyHeroesBinding
 
     override fun onCreateView(
@@ -25,12 +25,11 @@ class MyDisneyHerotsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.bottonBack.setOnClickListener {
+        binding.buttonBack.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.container, AllDisneyHeroesFragment())
                 .addToBackStack("")
                 .commit()
         }
-
     }
 }

@@ -9,14 +9,14 @@ import com.example.charactersproject.model.MyDisneyHero
 @Dao
 interface MyDisneyHeroDao {
 
-//    добавление элементов в список
+    //    добавление элементов в список
     @Insert
-    suspend fun insertMyDisneyHero (myDisneyHero:MyDisneyHero)
+    suspend fun insertMyDisneyHero(myDisneyHero: MyDisneyHero)
 
     @Delete
-    suspend fun deleteMyDisneyHero (myDisneyHero: MyDisneyHero)
+    suspend fun deleteMyDisneyHero(myDisneyHero: MyDisneyHero)
 
     // показать весь список
     @Query("SELECT * FROM MyDisneyHero")
-    suspend fun selectAllMyDisneyHeroes() :List<MyDisneyHero>
+    suspend fun selectAllMyDisneyHeroes(): List<MyDisneyHero>
 }

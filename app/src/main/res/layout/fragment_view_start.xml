@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/images_start"
+    style="@style/bg_start_fragment"
     android:orientation="vertical">
 
     <TextView
@@ -11,7 +11,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:fontFamily="@font/public_sans_regular"
-        android:text="@string/view_characher"
+        android:text="@string/view_hero"
         android:textColor="@color/textTitle"
         android:textSize="@dimen/sp40" />
 
@@ -24,7 +24,7 @@
         android:layout_marginStart="@dimen/dp40"
         android:layout_marginTop="@dimen/dp350"
         android:layout_marginEnd="@dimen/dp40"
-        android:background="@drawable/bg_botton"
+        android:background="@drawable/bg_button"
         android:text="@string/get_started"
         android:textSize="@dimen/sp_20" />
 

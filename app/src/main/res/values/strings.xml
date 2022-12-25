@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">CharactersProject</string>
-    <string name="view_characher">View characher</string>
+    <string name="view_hero">View Disney Hero</string>
     <string name="get_started">GET STARTED</string>
     <string name="all">All</string>
     <string name="my">My</string>
-    <string name="name_characher">Name characher</string>
+    <string name="name_hero">Name hero</string>
+    <string name="show_all_heroes">show all heroes</string>
+    <string name="show_my_heroes">show_my_heroes</string>
+    <string name="list_heroes">list heroes</string>
+    <string name="disney_hero">disney hero</string>
+    <string name="go_back">go back</string>
+    <string name="my_like_hero">my like hero</string>
 </resources>

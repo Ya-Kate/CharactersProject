@@ -5,13 +5,13 @@ import com.bumptech.glide.Glide
 import com.example.charactersproject.Data
 import com.example.charactersproject.databinding.ItemHeroBinding
 
-class DisneyViewHolder(private val itemCharacherBinding: ItemHeroBinding) :
-    RecyclerView.ViewHolder(itemCharacherBinding.root) {
+class DisneyViewHolder(private val itemDisneyHeroBinding: ItemHeroBinding) :
+    RecyclerView.ViewHolder(itemDisneyHeroBinding.root) {
 
     fun bind(item: Data) {
-        itemCharacherBinding.text.text = item.name
+        itemDisneyHeroBinding.text.text = item.name
 
-        Glide.with(itemCharacherBinding.root.context).load(item.imageUrl)
-            .into(itemCharacherBinding.image)
+        Glide.with(itemDisneyHeroBinding.root.context).load(item.imageUrl)
+            .into(itemDisneyHeroBinding.image)
     }
 }
