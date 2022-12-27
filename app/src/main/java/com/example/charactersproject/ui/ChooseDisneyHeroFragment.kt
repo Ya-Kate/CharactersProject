@@ -1,10 +1,12 @@
 package com.example.charactersproject.ui
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,6 +18,7 @@ import com.example.charactersproject.model.HeroShow
 import com.example.charactersproject.model.viewModels.DisneyHeroViewModel
 import com.example.charactersproject.ui.adapterHero.DisneyHeroAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.fragment.app.commit
 
 @AndroidEntryPoint
 class ChooseDisneyHeroFragment : Fragment() {
@@ -39,6 +42,9 @@ class ChooseDisneyHeroFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val anim = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_button_like)
+        binding.buttonAddMyDisney.startAnimation(anim)
+
         viewModel.image.observe(viewLifecycleOwner) {
             image = it
             Glide.with(requireContext()).load(it).into(binding.imageChoose)
@@ -61,6 +67,9 @@ class ChooseDisneyHeroFragment : Fragment() {
 
             if (isHeroLike) {
                 binding.buttonAddMyDisney.setImageDrawable(resources.getDrawable(R.drawable.icon_red_like))
+                ObjectAnimator.ofFloat(binding.buttonAddMyDisney, View.ALPHA, 0F, 1F).apply {
+                    duration = 4000
+                }.start()
             }
 
             viewModel.listDisneyHero.observe(viewLifecycleOwner) {
@@ -70,7 +79,14 @@ class ChooseDisneyHeroFragment : Fragment() {
         }
 
         binding.buttonBack.setOnClickListener {
-            requireActivity().onBackPressed()
+            parentFragmentManager.commit {
+                setCustomAnimations(
+                    R.anim.anim_open_fragment,
+                    R.anim.anim_close_fragment_heroes
+                )
+                replace(R.id.container, AllDisneyHeroesFragment())
+                    .addToBackStack("AllDisneyHeroesFragment")
+            }
         }
 
         binding.buttonAddMyDisney.setOnClickListener {
@@ -81,6 +97,8 @@ class ChooseDisneyHeroFragment : Fragment() {
                 Toast.makeText(context, "no like hero", Toast.LENGTH_LONG).show()
             }
         }
+
+
     }
 
     fun setListDisneyHeroShow(list: ArrayList<HeroShow>) {
@@ -94,8 +112,8 @@ class ChooseDisneyHeroFragment : Fragment() {
     }
 
 
-
 }
+
 
 
 

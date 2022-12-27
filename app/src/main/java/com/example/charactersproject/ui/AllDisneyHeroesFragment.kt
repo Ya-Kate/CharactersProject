@@ -1,5 +1,6 @@
 package com.example.charactersproject.ui
 
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
@@ -42,6 +44,14 @@ class AllDisneyHeroesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val animator = ValueAnimator.ofFloat(0F, 1F)
+        animator.addUpdateListener {
+            binding.textMy.alpha = it.animatedFraction
+            binding.textAll.alpha = it.animatedValue as Float
+        }
+        animator.duration = 4000
+        animator.start()
 
         binding.buttonAll.setOnClickListener {
             parentFragmentManager.beginTransaction()
@@ -99,12 +109,17 @@ class AllDisneyHeroesFragment : Fragment() {
                         arguments = bundleOf("BOOL" to isHeroLike)
                     }
 
-                    parentFragmentManager.beginTransaction()
-                        .replace(R.id.container, ChooseDisneyHeroFragment().apply {
+                    parentFragmentManager.commit {
+                        setCustomAnimations(
+                            R.anim.anim_open_fragment,
+                            R.anim.anim_close_fragment_allhero
+                        )
+                        replace(R.id.container, ChooseDisneyHeroFragment().apply {
                             arguments = bundleOf("ID" to data.id.toString())
                         })
-                        .addToBackStack("")
-                        .commit()
+                            .addToBackStack("ChooseDisneyHeroFragment")
+                    }
+
                 }
                 layoutManager = GridLayoutManager(requireContext(), 2)
             }
