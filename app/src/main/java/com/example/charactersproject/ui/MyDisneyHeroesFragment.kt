@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.charactersproject.R
 import com.example.charactersproject.databinding.FragmentMyDisneyHeroesBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,10 +27,7 @@ class MyDisneyHeroesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonBack.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, AllDisneyHeroesFragment())
-                .addToBackStack("")
-                .commit()
+            findNavController().navigate(R.id.action_myDisneyHeroesFragment_to_allDisneyHeroesFragment)
         }
     }
 }

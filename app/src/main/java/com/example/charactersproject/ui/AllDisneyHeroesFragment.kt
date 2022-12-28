@@ -9,12 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.charactersproject.Data
 import com.example.charactersproject.R
 import com.example.charactersproject.databinding.FragmentAllHeroesBinding
@@ -32,6 +31,7 @@ class AllDisneyHeroesFragment : Fragment() {
     private lateinit var binding: FragmentAllHeroesBinding
     private val viewModel: DisneyHeroViewModel by viewModels()
     var isHeroLike: Boolean = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,9 +54,7 @@ class AllDisneyHeroesFragment : Fragment() {
         animator.start()
 
         binding.buttonAll.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, AllDisneyHeroesFragment())
-                .commit()
+            findNavController().navigate(R.id.action_allDisneyHeroesFragment_self)
         }
 
         binding.buttonMy.setOnClickListener {
@@ -91,7 +89,7 @@ class AllDisneyHeroesFragment : Fragment() {
         binding.listNote.run {
             if (adapter == null) {
                 adapter = MyDisneyHeroAdapter()
-                layoutManager = LinearLayoutManager(requireContext())
+                layoutManager = GridLayoutManager(requireContext(), 2)
             }
             (adapter as? MyDisneyHeroAdapter)?.selList(list)
         }
@@ -108,18 +106,11 @@ class AllDisneyHeroesFragment : Fragment() {
                         }
                         arguments = bundleOf("BOOL" to isHeroLike)
                     }
-
-                    parentFragmentManager.commit {
-                        setCustomAnimations(
-                            R.anim.anim_open_fragment,
-                            R.anim.anim_close_fragment_allhero
+                    findNavController().navigate(
+                        AllDisneyHeroesFragmentDirections.actionAllDisneyHeroesFragmentToChooseDisneyHeroFragment(
+                            data.id.toString()
                         )
-                        replace(R.id.container, ChooseDisneyHeroFragment().apply {
-                            arguments = bundleOf("ID" to data.id.toString())
-                        })
-                            .addToBackStack("ChooseDisneyHeroFragment")
-                    }
-
+                    )
                 }
                 layoutManager = GridLayoutManager(requireContext(), 2)
             }

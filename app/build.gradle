@@ -8,6 +8,9 @@ plugins {
     id 'com.google.gms.google-services'
     // Add the Crashlytics Gradle plugin
     id 'com.google.firebase.crashlytics'
+    //Navigation-safe
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 android {
@@ -98,6 +101,12 @@ dependencies {
 
     // firebase
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
+
+    // Kotlin navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+     // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.3"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'

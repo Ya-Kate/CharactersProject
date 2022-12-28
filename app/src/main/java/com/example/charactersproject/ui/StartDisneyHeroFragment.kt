@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.charactersproject.R
 import com.example.charactersproject.databinding.FragmentViewStartBinding
 import com.example.charactersproject.repository.SharedPreferenceRepository
@@ -30,12 +31,9 @@ class StartDisneyHeroFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedPreferenceRepository.notFirstStart()
         binding.getStarted.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, AllDisneyHeroesFragment())
-                .addToBackStack("")
-                .commit()
+            sharedPreferenceRepository.notFirstStart()
+            findNavController().navigate(R.id.action_startDisneyHeroFragment_to_allDisneyHeroesFragment3)
         }
     }
 }

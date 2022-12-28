@@ -18,13 +18,18 @@ import com.example.charactersproject.model.HeroShow
 import com.example.charactersproject.model.viewModels.DisneyHeroViewModel
 import com.example.charactersproject.ui.adapterHero.DisneyHeroAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.fragment.app.commit
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 
 @AndroidEntryPoint
 class ChooseDisneyHeroFragment : Fragment() {
 
     private val viewModel: DisneyHeroViewModel by viewModels()
+
     private lateinit var binding: FragmentChooseHeroesBinding
+
+    private val args: ChooseDisneyHeroFragmentArgs by navArgs()
+
     private var idImage: String = ""
     var name: String = ""
     var image: String = ""
@@ -60,7 +65,7 @@ class ChooseDisneyHeroFragment : Fragment() {
             isHeroLike = it
         }
 
-        arguments?.getString("ID")?.let { id ->
+        args.idHero.let { id ->
             Log.d("MyLog", "getString arguments: $id")
             viewModel.getImageDisneyHero(id)
             idImage = id
@@ -79,14 +84,7 @@ class ChooseDisneyHeroFragment : Fragment() {
         }
 
         binding.buttonBack.setOnClickListener {
-            parentFragmentManager.commit {
-                setCustomAnimations(
-                    R.anim.anim_open_fragment,
-                    R.anim.anim_close_fragment_heroes
-                )
-                replace(R.id.container, AllDisneyHeroesFragment())
-                    .addToBackStack("AllDisneyHeroesFragment")
-            }
+            findNavController().navigate(R.id.action_chooseDisneyHeroFragment_to_allDisneyHeroesFragment)
         }
 
         binding.buttonAddMyDisney.setOnClickListener {
@@ -97,8 +95,6 @@ class ChooseDisneyHeroFragment : Fragment() {
                 Toast.makeText(context, "no like hero", Toast.LENGTH_LONG).show()
             }
         }
-
-
     }
 
     fun setListDisneyHeroShow(list: ArrayList<HeroShow>) {
@@ -110,9 +106,8 @@ class ChooseDisneyHeroFragment : Fragment() {
             (adapter as? DisneyHeroAdapter)?.submitList(list)
         }
     }
-
-
 }
+
 
 
 
