@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/bg_all_fragment">
+
+    <ImageButton
+        android:id="@+id/button_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp22"
+        android:layout_marginTop="@dimen/dp90"
+        android:background="@drawable/bg_all_my_heroes"
+        android:contentDescription="@string/show_all_heroes"
+        android:src="@drawable/all_hero"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/button_my"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp20"
+        android:background="@drawable/bg_all_my_heroes_not_activity"
+        android:contentDescription="@string/show_my_heroes"
+        android:src="@drawable/my_icon"
+        app:layout_constraintStart_toEndOf="@id/button_all"
+        app:layout_constraintTop_toTopOf="@id/button_all" />
+
+    <TextView
+        android:id="@+id/text_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/all"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintEnd_toEndOf="@id/button_all"
+        app:layout_constraintStart_toStartOf="@id/button_all"
+        app:layout_constraintTop_toBottomOf="@id/button_all" />
+
+    <TextView
+        android:id="@+id/text_my"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my"
+        android:textColor="@color/bg_button_no_activity"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/button_my"
+        app:layout_constraintStart_toStartOf="@id/button_my"
+        app:layout_constraintTop_toBottomOf="@id/button_my" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:contentDescription="@string/list_heroes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_all" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listNote"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp0"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

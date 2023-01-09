@@ -8,13 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="textTitle">#FFFFFFFF</color>
-    <color name="bg_botton">#968AC6</color>
-    <color name="bg_botton_no_activiti">#807F85</color>
+    <color name="bg_button">#968AC6</color>
+    <color name="bg_button_no_activity">#807F85</color>
     <color name="text_disney">#5407B3</color>
     <color name="bg_back">#FCEEFB</color>
     <color name="ic_back">#3F414E</color>
     <color name="bg_add_my_disney">#3CB6AA</color>
-    <color name="bg_add_my_disney_back">#108075</color>
+    <color name="bg_flex_box">#D0C7F3</color>
 
 
 </resources>

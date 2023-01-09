@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi_main"
+    app:startDestination="@id/startDisneyHeroFragment">
+    <fragment
+        android:id="@+id/startDisneyHeroFragment"
+        android:name="com.example.charactersproject.ui.StartDisneyHeroFragment"
+        android:label="StartDisneyHeroFragment"
+        tools:layout="@layout/fragment_view_start">
+        <action
+            android:id="@+id/action_startDisneyHeroFragment_to_allDisneyHeroesFragment3"
+            app:destination="@id/allDisneyHeroesFragment"
+            app:popUpTo="@+id/startDisneyHeroFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/allDisneyHeroesFragment"
+        android:name="com.example.charactersproject.ui.AllDisneyHeroesFragment"
+        android:label="AllDisneyHeroesFragment"
+        tools:layout="@layout/fragment_all_heroes">
+        <action
+            android:id="@+id/action_allDisneyHeroesFragment_to_chooseDisneyHeroFragment"
+            app:destination="@id/chooseDisneyHeroFragment"
+            app:enterAnim="@anim/anim_open_fragment"
+            app:exitAnim="@anim/anim_close_fragment_all_hero"
+            app:popEnterAnim="@anim/anim_open_fragment"
+            app:popExitAnim="@anim/anim_close_fragment_hero" />
+        <action
+            android:id="@+id/action_allDisneyHeroesFragment_to_myDisneyHeroesFragment"
+            app:destination="@id/myDisneyHeroesFragment" />
+        <action
+            android:id="@+id/action_allDisneyHeroesFragment_self"
+            app:destination="@id/allDisneyHeroesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chooseDisneyHeroFragment"
+        android:name="com.example.charactersproject.ui.ChooseDisneyHeroFragment"
+        android:label="ChooseDisneyHeroFragment"
+        tools:layout="@layout/fragment_choose_heroes">
+        <action
+            android:id="@+id/action_chooseDisneyHeroFragment_to_allDisneyHeroesFragment"
+            app:destination="@id/allDisneyHeroesFragment"
+            app:enterAnim="@anim/anim_open_fragment"
+            app:exitAnim="@anim/anim_close_fragment_hero"
+            app:popEnterAnim="@anim/anim_open_fragment"
+            app:popExitAnim="@anim/anim_close_fragment_all_hero" />
+        <argument
+            android:name="id_hero"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myDisneyHeroesFragment"
+        android:name="com.example.charactersproject.ui.MyDisneyHeroesFragment"
+        android:label="MyDisneyHeroesFragment"
+        tools:layout="@layout/fragment_my_disney_heroes">
+        <action
+            android:id="@+id/action_myDisneyHeroesFragment_to_allDisneyHeroesFragment"
+            app:destination="@id/allDisneyHeroesFragment" />
+    </fragment>
+</navigation>
